@@ -62,6 +62,49 @@ Revision Of These Chapters Is Done
 14-12-2025 PHY/SL, PHY/MOP
 15-12-2025 PHY/NLM, CHM/PREODIC
 16-12-2025 PHY/WEP, CHM/CBONDING
+
+        Revision Of These Chapters Is Done
+------------------------------------------------
+??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
+14-12-2025 PHY/SL, PHY/MOP
+15-12-2025 PHY/NLM, CHM/PREODIC
+16-12-2025 PHY/WEP, CHM/CBONDING
+        Revision Of These Chapters Is Done
+------------------------------------------------
+??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
+14-12-2025 PHY/SL, PHY/MOP
+15-12-2025 PHY/NLM, CHM/PREODIC
+16-12-2025 PHY/WEP, CHM/CBONDING
+        Revision Of These Chapters Is Done
+------------------------------------------------
+??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
+14-12-2025 PHY/SL, PHY/MOP
+15-12-2025 PHY/NLM, CHM/PREODIC
+16-12-2025 PHY/WEP, CHM/CBONDING
+        Revision Of These Chapters Is Done
+------------------------------------------------
+??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
+14-12-2025 PHY/SL, PHY/MOP
+15-12-2025 PHY/NLM, CHM/PREODIC
+16-12-2025 PHY/WEP, CHM/CBONDING
+        Revision Of These Chapters Is Done
+------------------------------------------------
+??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
+14-12-2025 PHY/SL, PHY/MOP
+15-12-2025 PHY/NLM, CHM/PREODIC
+16-12-2025 PHY/WEP, CHM/CBONDING
+        Revision Of These Chapters Is Done
+------------------------------------------------
+??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
+14-12-2025 PHY/SL, PHY/MOP
+15-12-2025 PHY/NLM, CHM/PREODIC
+16-12-2025 PHY/WEP, CHM/CBONDING
+        Revision Of These Chapters Is Done
+------------------------------------------------
+??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
+14-12-2025 PHY/SL, PHY/MOP
+15-12-2025 PHY/NLM, CHM/PREODIC
+16-12-2025 PHY/WEP, CHM/CBONDING
     </pre>
 </div>
 
@@ -77,9 +120,22 @@ function resize() {
 window.addEventListener("resize", resize);
 resize();
 
-/* ---------- PARTICLES ---------- */
+/* ---------- PARTICLES (PURPLE VARIANTS + GREEN OUTLIERS) ---------- */
 const particles = [];
-const P_COUNT = 150;
+const P_COUNT = 160;
+
+function randomColor() {
+    // ~90% purple variants, ~10% green outliers
+    if (Math.random() < 0.1) {
+        return { r: 120, g: 255, b: 140 }; // End-portal green
+    }
+    const base = 160 + Math.random() * 60;
+    return {
+        r: base,
+        g: 60 + Math.random() * 40,
+        b: 200 + Math.random() * 55
+    };
+}
 
 function spawnParticle() {
     return {
@@ -87,22 +143,27 @@ function spawnParticle() {
         y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.15,
         vy: -(Math.random() * 0.4 + 0.1),
-        r: Math.random() * 1.6 + 0.4,
+        r: Math.random() * 1.8 + 0.4,
         life: 0,
         maxLife: Math.random() * 300 + 200,
-        alpha: 0
+        alpha: 0,
+        color: randomColor()
     };
 }
 
 for (let i = 0; i < P_COUNT; i++) particles.push(spawnParticle());
 
-/* ---------- GRID (UPWARD ONLY) ---------- */
+/* ---------- GRID (UPWARD + SLOW PULSE) ---------- */
 let gridOffsetY = 0;
+let pulseT = 0;
+
 const GRID_STEP = 80;
 const GRID_SPEED = 0.25;
 
 function drawGrid() {
-    ctx.strokeStyle = "rgba(140, 90, 180, 0.10)";
+    // slow sine pulse
+    const pulse = 0.08 + Math.sin(pulseT) * 0.05;
+    ctx.strokeStyle = `rgba(160, 100, 200, ${pulse})`;
     ctx.lineWidth = 1;
 
     // vertical lines (static)
@@ -113,7 +174,7 @@ function drawGrid() {
         ctx.stroke();
     }
 
-    // horizontal lines (move upward)
+    // horizontal lines (moving up)
     const offset = gridOffsetY % GRID_STEP;
     for (let y = -offset; y < h; y += GRID_STEP) {
         ctx.beginPath();
@@ -130,6 +191,7 @@ function tick() {
 
     drawGrid();
     gridOffsetY += GRID_SPEED;
+    pulseT += 0.01; // slow pulse rate
 
     for (const p of particles) {
         p.life++;
@@ -142,8 +204,8 @@ function tick() {
         p.x += p.vx + (Math.random() - 0.5) * 0.1;
         p.y += p.vy;
 
-        ctx.fillStyle = `rgba(180, 80, 255, ${p.alpha * 0.85})`;
-        ctx.fillRect(p.x, p.y, p.r + 0.5, p.r + 0.5);
+        ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.alpha * 0.85})`;
+        ctx.fillRect(p.x, p.y, p.r + 0.6, p.r + 0.6);
 
         if (p.life >= p.maxLife || p.y < -10) {
             Object.assign(p, spawnParticle());
