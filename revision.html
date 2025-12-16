@@ -46,7 +46,7 @@ pre {
     padding: 16px;
     max-width: 900px;
     white-space: pre-wrap;
-    margin-bottom: 30px;
+    margin-bottom: 100px;
 }
 </style>
 </head>
@@ -58,54 +58,17 @@ pre {
     <h1>Sprx23's Revision Status</h1>
     <pre>
 Revision Of These Chapters Is Done
-------------------------------------------------
-??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
+---------------------------------------------------
 14-12-2025 PHY/SL, PHY/MOP
 15-12-2025 PHY/NLM, CHM/PREODIC
 16-12-2025 PHY/WEP, CHM/CBONDING
 
-        Revision Of These Chapters Is Done
-------------------------------------------------
-??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
-14-12-2025 PHY/SL, PHY/MOP
-15-12-2025 PHY/NLM, CHM/PREODIC
-16-12-2025 PHY/WEP, CHM/CBONDING
-        Revision Of These Chapters Is Done
-------------------------------------------------
-??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
-14-12-2025 PHY/SL, PHY/MOP
-15-12-2025 PHY/NLM, CHM/PREODIC
-16-12-2025 PHY/WEP, CHM/CBONDING
-        Revision Of These Chapters Is Done
-------------------------------------------------
-??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
-14-12-2025 PHY/SL, PHY/MOP
-15-12-2025 PHY/NLM, CHM/PREODIC
-16-12-2025 PHY/WEP, CHM/CBONDING
-        Revision Of These Chapters Is Done
-------------------------------------------------
-??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
-14-12-2025 PHY/SL, PHY/MOP
-15-12-2025 PHY/NLM, CHM/PREODIC
-16-12-2025 PHY/WEP, CHM/CBONDING
-        Revision Of These Chapters Is Done
-------------------------------------------------
-??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
-14-12-2025 PHY/SL, PHY/MOP
-15-12-2025 PHY/NLM, CHM/PREODIC
-16-12-2025 PHY/WEP, CHM/CBONDING
-        Revision Of These Chapters Is Done
-------------------------------------------------
-??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
-14-12-2025 PHY/SL, PHY/MOP
-15-12-2025 PHY/NLM, CHM/PREODIC
-16-12-2025 PHY/WEP, CHM/CBONDING
-        Revision Of These Chapters Is Done
-------------------------------------------------
-??-??-???? PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV, CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF, MAT/DET, MAT/LCD
-14-12-2025 PHY/SL, PHY/MOP
-15-12-2025 PHY/NLM, CHM/PREODIC
-16-12-2025 PHY/WEP, CHM/CBONDING
+Class 12th
+---------------------------------------------------
+PHY/ELECTRIC, PHY/ELECTRO, PHY/POTENT, PHY/MAG, PHY/MMAT, PHY/EMI, PHY/WAV
+CHM/SOL, CHM/ELECTRO, CHM/CKEN, CHM/OC-all, CHM/BM, CHM/COORD, CHM/DF
+MAT/DET, MAT/LCD
+
     </pre>
 </div>
 
@@ -126,8 +89,8 @@ const particles = [];
 const P_COUNT = 160;
 
 function randomColor() {
-    // ~90% purple variants, ~10% green outliers
-    if (Math.random() < 0.1) {
+    // ~85% purple variants, ~15% green outliers
+    if (Math.random() < 0.15) {
         return { r: 120, g: 255, b: 140 }; // End-portal green
     }
     const base = 160 + Math.random() * 60;
