@@ -61,7 +61,7 @@
 		(async () => {
 			const rep = await fetch("revision.txt")
 			const txt = await rep.text()
-			document.getElementById("revision_txt").textContent = txt
+			document.getElementById("revision_text").textContent = txt
 		})();
 
 		const canvas = document.getElementById("bg");
